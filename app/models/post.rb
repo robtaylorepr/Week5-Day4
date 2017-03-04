@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to	:users
-  validations :body,  presence: true
+  validates :body,  presence: true
   validates_length_of :body, :maximum => 160
 
   def self.timeline(user)
