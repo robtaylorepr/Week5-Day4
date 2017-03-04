@@ -24,13 +24,8 @@ class UsersController < ApplicationController
     end
   end
 
-
-  def follow
-    current_user.toggle_follow!(User.find(params[:id]))
-  end
-
-  def unfollow
-    current_user.toggle_follow!(User.find(params[:id]))
+  def toggle
+    current_user.toggle_follow!(User.find(id: params[:id]))
   end
 
   private

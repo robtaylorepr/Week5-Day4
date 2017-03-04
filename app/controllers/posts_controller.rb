@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   before_action :require_user, only: [:create]
 
   def index
-    @posts = Post.all
+    if current_user
+      @posts = Post.timeline(current_user)
+    else
+      @posts = Post.all
+    end
     render json: @posts
   end
 
