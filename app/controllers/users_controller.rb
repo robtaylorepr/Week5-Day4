@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  # skip_before_action:  :require_user, only: [:create, :index]
 
   def index
     @users = User.all
-    render json: @user
+    render json: @users
   end
 
   def create
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   def signin
     @user = User.find_by(uname: params[:uname])&.authenticate(params[:password])
     if @user
-      render json: @user
+      render json: @user, serializer: UserExpandedSerializer
     else
       render json: ["User not found"]
     end

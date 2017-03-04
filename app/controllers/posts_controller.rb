@@ -8,16 +8,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if current_user
-      binding.pry
-      @post.user = current_user
-      if @post.save
-        render json: @post
-      else
-        render json: @post.errors.full_messages, status: 400
-      end
+    @post.user = current_user
+    if @post.save
+      render json: @post
     else
-      require_user
+      render json: @post.errors.full_messages, status: 400
     end
   end
 
