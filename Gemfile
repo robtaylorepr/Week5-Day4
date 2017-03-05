@@ -28,6 +28,7 @@ gem 'active_model_serializers'
 gem 'pry-rails'
 gem 'pry-nav'
 gem 'rails_12factor', group: :production
+gem 'kaminari'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

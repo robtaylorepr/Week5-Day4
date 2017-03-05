@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to	:user
   validates :body,  presence: true
   validates_length_of :body, :maximum => 160
+  # paginates_per 5
 
   def self.timeline(user)
     following_ids = user.followees(User).pluck(:id)

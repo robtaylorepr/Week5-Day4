@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many	:posts
   validates   :name, presence: true
   validates   :uname, presence: true, uniqueness: true
+  # paginates_per 5
 end
