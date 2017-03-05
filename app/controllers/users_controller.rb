@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if current_user
       @other_uname = params[:uname]
       @other_user  = User.find_by(uname: @other_uname)
-      if other_user
+      if @other_user
         current_user.toggle_follow!(@other_user)
         render json: ["toggled follow status of #{@other_uname}"]
       else
