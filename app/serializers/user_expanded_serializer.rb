@@ -1,5 +1,5 @@
 class UserExpandedSerializer < ActiveModel::Serializer
-  attributes :name, :uname, :id, :photo, :api_token, :followstatus
+  attributes :name, :uname, :id, :photo, :api_token
 
   def followstatus
     if current_user
