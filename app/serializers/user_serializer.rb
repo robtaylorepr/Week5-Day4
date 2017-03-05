@@ -1,12 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :name, :uname, :id, :photo, :follow
+  attributes :name, :uname, :id, :photo
 
-  def follow
-    if current_user
-      current_user.follows?(object)
-    else
-      false
-    end
-  end
+
 
 end

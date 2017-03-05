@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     other_user  = User.find_by(uname: other_uname)
     if other_user
       current_user.toggle_follow!(other_user)
-      render json: ["toggled follow status of #{other_uname}"]
+      render json: [other_user,"toggled follow status of #{other_uname}"]
     else
       render json: ["no user #{other_uname}"], status: 400
     end
