@@ -26,13 +26,13 @@ class UsersController < ApplicationController
 
   def toggle
     if current_user
-      other_uname = params[:uname]
-      other_user  = User.find_by(uname: other_uname)
+      @other_uname = params[:uname]
+      @other_user  = User.find_by(uname: @other_uname)
       if other_user
-        current_user.toggle_follow!(other_user)
-        render json: ["#{other_user}","toggled follow status of #{other_uname}"], serializer: UserExpandedSerializer
+        current_user.toggle_follow!(@other_user)
+        render json: @other_user, serializer: UserExpandedSerializer
       else
-        render json: ["no user #{other_uname}"], status: 400
+        render json: ["no user #{@other_uname}"], status: 400
       end
     else
       render json: ["must logged in to follow/unfollow"], status: 400
