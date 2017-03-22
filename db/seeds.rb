@@ -6,15 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 5.times do
-  @aname = Faker::Name,
-  Faker.unique_mode = true
-  @auname = Faker::Internet.user_name
-  Faker.unique_mode = false
-  @apassword = Faker::Internet.password
   @user = User.create(
-    name:     @aname,
-    uname:    @auname,
-    password: @apassword
+    name:     Faker::Name.name,
+    uname:    Faker::Internet.user_name,
+    password: Faker::Internet.password
   )
   2.times do
     Post.create(
